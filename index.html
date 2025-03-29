@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitchen CPQ</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .config-section { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; }
+        select, input { width: 100%; padding: 8px; margin-bottom: 10px; }
+        button { padding: 10px; background-color: #007bff; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Kitchen Configurator</h1>
+    
+    <div class="config-section">
+        <label for="cabinet">Select Cabinet Type:</label>
+        <select id="cabinet">
+            <option value="wood">Wood</option>
+            <option value="laminate">Laminate</option>
+            <option value="metal">Metal</option>
+        </select>
+    </div>
+    
+    <div class="config-section">
+        <label for="worktop">Select Worktop Material:</label>
+        <select id="worktop">
+            <option value="granite">Granite</option>
+            <option value="marble">Marble</option>
+            <option value="wood">Wood</option>
+        </select>
+    </div>
+    
+    <div class="config-section">
+        <label for="sink">Select Sink Type:</label>
+        <select id="sink">
+            <option value="stainless">Stainless Steel</option>
+            <option value="ceramic">Ceramic</option>
+            <option value="composite">Composite</option>
+        </select>
+    </div>
+    
+    <button onclick="generateQuote()">Get Quote</button>
+    
+    <h2>Quotation</h2>
+    <p id="quote"></p>
+    
+    <script>
+        function generateQuote() {
+            const cabinet = document.getElementById('cabinet').value;
+            const worktop = document.getElementById('worktop').value;
+            const sink = document.getElementById('sink').value;
+            
+            const prices = {
+                wood: 500, laminate: 300, metal: 700,
+                granite: 1000, marble: 1200, wood: 800,
+                stainless: 200, ceramic: 300, composite: 400
+            };
+            
+            const totalPrice = prices[cabinet] + prices[worktop] + prices[sink];
+            document.getElementById('quote').innerText = `Total Price: €${totalPrice}`;
+        }
+    </script>
+</body>
+</html>
